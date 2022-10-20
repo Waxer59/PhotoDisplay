@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "backend/",
-    "frontend/"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md,html,css,js,jsx}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -26,6 +26,6 @@
   "dependencies": {},
   "packageManager": "yarn@1.22.19",
   "lint-staged": {
-    "frontend/":["lint"]
+    "**/*.{md}": []
   }
 }
