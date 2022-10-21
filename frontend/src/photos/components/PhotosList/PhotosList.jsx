@@ -1,75 +1,16 @@
+import { PhotoItem } from './PhotoItem';
+import { useSelector } from 'react-redux';
 import './PhotosList.css';
 
 export const PhotosList = () => {
+  const { photos } = useSelector((state) => state.photos);
+
   return (
     <div className="photos-container">
       <ul className="photos">
-        <li>
-          <img
-            src="https://images.unsplash.com/photo-1666346166850-e5ee1857ea18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-            alt="photo1"
-          />
-        </li>
-        <li>
-          <img
-            src="https://images.unsplash.com/photo-1665686310974-2ed1eb7f57ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-            alt="photo1"
-          />
-        </li>
-        <li>
-          <img
-            src="https://images.unsplash.com/photo-1666315570254-9bf5eb48df46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-            alt="photo1"
-          />
-        </li>
-        <li>
-          <img
-            src="https://images.unsplash.com/photo-1666307536243-a9bf2d66c51d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-            alt="photo1"
-          />
-        </li>
-        <li>
-          <img
-            src="https://plus.unsplash.com/premium_photo-1663100596017-043f4e0d2bf1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-            alt="photo1"
-          />
-        </li>
-        <li>
-          <img
-            src="https://images.unsplash.com/photo-1665686310934-8fab52b3821b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyNnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-            alt=""
-          />
-        </li>
-        <li>
-          <img
-            src="https://images.unsplash.com/photo-1666307536243-a9bf2d66c51d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-            alt="photo1"
-          />
-        </li>
-        <li>
-          <img
-            src="https://plus.unsplash.com/premium_photo-1663100596017-043f4e0d2bf1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-            alt="photo1"
-          />
-        </li>
-        <li>
-          <img
-            src="https://images.unsplash.com/photo-1665686310934-8fab52b3821b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyNnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-            alt=""
-          />
-        </li>
-        <li>
-          <img
-            src="https://images.unsplash.com/photo-1666344869474-15bd512549e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-            alt=""
-          />
-        </li>
-        <li>
-          <img
-            src="https://images.unsplash.com/photo-1666317411591-924603dbe861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-            alt=""
-          />
-        </li>
+        {photos.map((photo) => (
+          <PhotoItem key={photo.id} {...photo} />
+        ))}
       </ul>
     </div>
   );
