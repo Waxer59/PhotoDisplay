@@ -7,12 +7,14 @@ PhotoDisplay is a simple photo gallery that allows you to display photos from a 
 # Technologies
 
 ## Frontend
-* React
-* Redux
-* React Icons
-* PhotoSwipe
+
+- React
+- Redux
+- React Icons
+- PhotoSwipe
 
 ## Backend
-* Nestjs
-* MongoDB
-* Docker
+
+- Nestjs
+- MongoDB
+- Docker

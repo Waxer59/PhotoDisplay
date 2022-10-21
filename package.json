@@ -27,6 +27,15 @@
   "dependencies": {},
   "packageManager": "yarn@1.22.19",
   "lint-staged": {
-    "**/*.{md}": []
+    "frontend/*.{ts,tsx,js,jsx}": [
+      "eslint --fix"
+    ],
+    "frontend/*.{ts,tsx,js,jsx,html,css,md}": [
+      "prettier --write"
+    ],
+    "backend/*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
