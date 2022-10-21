@@ -10,7 +10,7 @@ export const Navbar = () => {
         </span>
 
         <div className="search-icon">
-          <IoIosSearch style={{ opacity: 0.5 }} />
+          <IoIosSearch style={{ opacity: 0.5 }} size="18px" />
           <input type="text" className="search" placeholder="Search by label" />
         </div>
       </div>
