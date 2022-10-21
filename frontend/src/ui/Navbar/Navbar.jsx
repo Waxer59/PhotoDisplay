@@ -6,7 +6,6 @@ export const Navbar = () => {
   const { openPhotoModal } = useUiStore();
 
   const handleAddPhotoClick = () => {
-    console.log('handleAddPhotoClick');
     openPhotoModal();
   };
 

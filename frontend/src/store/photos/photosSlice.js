@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const photosSlice = createSlice({
   name: 'photos',
   initialState: {
-    isUplaoding: false,
+    isUploading: false,
     photos: [],
     activePhoto: null
   },
@@ -18,10 +18,10 @@ export const photosSlice = createSlice({
       state.photos.push(newPhoto);
     },
     onUploadingPhoto: (state) => {
-      state.isUplaoding = true;
+      state.isUploading = true;
     },
     onPhotoUploaded: (state) => {
-      state.isUplaoding = false;
+      state.isUploading = false;
     },
     onSetActivePhoto: (state, { payload }) => {
       state.activePhoto = payload;

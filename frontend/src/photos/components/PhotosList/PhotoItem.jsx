@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 
-export const PhotoItem = ({ img, label }) => {
+export const PhotoItem = ({ url, label }) => {
   return (
     <li>
-      <img src={img} alt={label} />
+      <img src={url} alt={label} />
     </li>
   );
 };

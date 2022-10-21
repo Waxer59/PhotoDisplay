@@ -1,25 +1,51 @@
 import Modal from 'react-modal';
+import { useForm } from '../../../hooks/useForm';
+import { usePhotoStore } from '../../../hooks/usePhotoStore';
 import { useUiStore } from '../../../hooks/useUiStore';
 import './PhotoModal.css';
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    margin: '0 auto'
   }
+};
+
+const initialState = {
+  label: '',
+  photoUrl: ''
 };
 
 Modal.setAppElement('#root');
 
 export const PhotoModal = () => {
+  const { onInputChange, label, photoUrl, onResetForm } = useForm(initialState);
+  const { addNewPhoto } = usePhotoStore();
+
   const { isPhotoModalOpen, closePhotoModal } = useUiStore();
 
   const onSubmit = (e) => {
+    console.log('onSubmit');
     e.preventDefault();
+    const newPhoto = {
+      id: Date.now(),
+      label,
+      url: photoUrl,
+      date: new Date().getTime()
+    };
+    addNewPhoto(newPhoto);
+    closePhotoModal();
+    onResetForm();
+  };
+
+  const onHandlePhotoUrlChange = (e) => {
+    onInputChange(e);
+  };
+
+  const onHandleLabelChange = (e) => {
+    onInputChange(e);
   };
 
   return (
@@ -42,6 +68,7 @@ export const PhotoModal = () => {
             placeholder="Label"
             name="label"
             className="text-input"
+            onChange={onHandleLabelChange}
           />
         </div>
 
@@ -54,11 +81,15 @@ export const PhotoModal = () => {
             placeholder="https://photoUrl.com"
             name="photoUrl"
             className="text-input"
+            onChange={onHandlePhotoUrlChange}
           />
         </div>
 
         <div className="btns-inputs">
-          <button className="btn-cancel" onClick={closePhotoModal}>
+          <button
+            className="btn-cancel"
+            onClick={closePhotoModal}
+            type="button">
             Cancel
           </button>
           <button className="btn-submit" type="submit">
