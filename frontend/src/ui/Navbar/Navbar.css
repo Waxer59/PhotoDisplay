@@ -1,0 +1,57 @@
+.navbar {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  margin-top: 25px;
+  align-items: center;
+}
+
+/* Logo search */
+
+.logo-search {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-right: 25px;
+  margin-top: -15px;
+}
+
+.search-icon {
+  border: rgba(0, 0, 0, 0.3) 1px solid;
+  border-radius: 5px;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+}
+
+.search {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  background: none;
+  color: var(--principal-black);
+}
+
+.search::placeholder {
+  font-size: 0.9rem;
+}
+
+/* Add photo btn */
+
+.add-photo {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  font-weight: 600;
+  color: white;
+  background: var(--green);
+}

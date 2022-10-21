@@ -1,0 +1,46 @@
+:root {
+  --principal-white: #fafaff;
+  --secondary-white: #eef0f2;
+  --principal-black: #1c1c1c;
+  --green: #3db46d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: clamp(12px, 1.5vw, 16px);
+  max-width: 1440px;
+  width: 90%;
+  margin: 0 auto;
+  overflow: overlay;
+  font-family: 'Manrope', sans-serif, Arial, Helvetica;
+}
+
+body {
+  background: var(--principal-white);
+}
+
+/* ScrollBar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5c5c5c;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6c6c6c;
+}

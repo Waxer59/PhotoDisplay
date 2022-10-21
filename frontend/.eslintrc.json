@@ -13,11 +13,19 @@
   "rules": {
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/react-in-jsx-scope": 0,
-    "semi": [2, "always"]
+    "semi": [2, "always"],
+    "import/prefer-default-export": "off"
   },
   "settings": {
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "react/function-component-definition": [
+    "error",
+    {
+      "namedComponents": ["function-declaration", "arrow-function"],
+      "unnamedComponents": "arrow-function"
+    }
+  ]
 }
