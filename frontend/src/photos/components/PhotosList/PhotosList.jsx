@@ -1,24 +1,25 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { PhotoItem } from './PhotoItem';
 import PropTypes from 'prop-types';
 import './PhotosList.css';
+import { usePhotoStore } from '../../../hooks/usePhotoStore';
+import { getImagesByLabel } from '../../helpers/getImagesByLabel';
 
 export const PhotosList = ({ query }) => {
-  // const [isPhotoFound, setIsPhotoFound] = useState(true);
+  const { photos } = usePhotoStore();
+  const images = getImagesByLabel(photos, query);
+  const showImageNotFound = images.length === 0 && photos.length > 0;
 
-  const { photos } = useSelector((state) => state.photos);
   return (
     <div className="photos-container">
-      <ul className="photos" id="photos">
-        {photos.map((photo) =>
-          photo.label.includes(query) ? (
+      {showImageNotFound ? (
+        <h2 className="image-not-found">Upss... Image not found :(</h2>
+      ) : (
+        <ul className="photos" id="photos">
+          {images.map((photo) => (
             <PhotoItem key={photo.id} {...photo} />
-          ) : (
-            <h2 key={photo.id}>Nothing</h2>
-          )
-        )}
-      </ul>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

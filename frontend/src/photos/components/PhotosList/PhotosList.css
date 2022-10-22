@@ -13,3 +13,8 @@ img {
   border-radius: 16px;
   max-width: 100%;
 }
+
+.image-not-found {
+  text-align: center;
+  font-size: 2rem;
+}
