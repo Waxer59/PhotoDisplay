@@ -1,4 +1,5 @@
 import Modal from 'react-modal';
+import Swal from 'sweetalert2';
 import { useForm } from '../../../hooks/useForm';
 import { usePhotoStore } from '../../../hooks/usePhotoStore';
 import { useUiStore } from '../../../hooks/useUiStore';
@@ -10,6 +11,14 @@ const initialState = {
   photoUrl: ''
 };
 
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true
+});
+
 Modal.setAppElement('#root');
 
 export const NewPhotoModal = () => {
@@ -20,6 +29,15 @@ export const NewPhotoModal = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    if (label.length < 3 || photoUrl.length < 3) {
+      Toast.fire({
+        toast: true,
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please fill all the fields!'
+      });
+      return;
+    }
     const newPhoto = {
       id: Date.now(),
       label,

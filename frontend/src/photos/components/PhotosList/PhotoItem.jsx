@@ -17,7 +17,14 @@ export const PhotoItem = ({ url, label, id }) => {
         Delete
       </button>
       <span className="label">{label}</span>
-      <img src={url} alt={label} />
+      <img
+        src={url}
+        alt={label}
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src = '../../public/images/image-not-found.png';
+        }}
+      />
     </li>
   );
 };
