@@ -5,13 +5,11 @@
 .photos {
   padding: 0;
   list-style: none;
-
   columns: 3 320px;
   column-gap: 45px;
 }
 
 img {
-  margin-bottom: 45px;
   border-radius: 16px;
   max-width: 100%;
 }

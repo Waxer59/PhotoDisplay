@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
+import './PhotoItem.css';
 
 export const PhotoItem = ({ url, label }) => {
   return (
-    <li>
+    <li className="photo">
+      <button className="btn-delete">Delete</button>
+      <span className="label">{label}</span>
       <img src={url} alt={label} />
     </li>
   );
