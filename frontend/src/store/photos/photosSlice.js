@@ -25,6 +25,15 @@ export const photosSlice = createSlice({
     },
     onSetActivePhoto: (state, { payload }) => {
       state.activePhoto = payload;
+    },
+    onDeletePhoto: (state) => {
+      const newPhotos = state.photos.filter((photo) => {
+        if (photo.id !== state.activePhoto.id) {
+          return photo;
+        }
+      });
+      state.photos = newPhotos;
+      state.activePhoto = null;
     }
   }
 });
@@ -33,5 +42,6 @@ export const {
   onAddNewPhoto,
   onPhotoUploaded,
   onUploadingPhoto,
-  onSetActivePhoto
+  onSetActivePhoto,
+  onDeletePhoto
 } = photosSlice.actions;

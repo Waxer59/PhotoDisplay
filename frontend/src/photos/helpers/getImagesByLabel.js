@@ -1,4 +1,6 @@
-export const getImagesByLabel = (images, label) => {
+export const getImagesByLabel = (photos, label) => {
   label = label.toLowerCase().trim();
-  return images.filter((image) => image.label.includes(label));
+  return photos.filter((photo) =>
+    photo.label.toLowerCase().trim().includes(label)
+  );
 };

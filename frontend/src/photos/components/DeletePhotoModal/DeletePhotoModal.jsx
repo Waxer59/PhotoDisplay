@@ -1,14 +1,29 @@
+import Swal from 'sweetalert2';
+import { useForm } from '../../../hooks/useForm';
 import { usePhotoStore } from '../../../hooks/usePhotoStore';
 import { useUiStore } from '../../../hooks/useUiStore';
 import { PhotoModal } from '../../layouts/Modal/PhotoModal';
 import './DeletePhotoModal.css';
 
+const initialState = {
+  password: ''
+};
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true
+});
+
 export const DeletePhotoModal = () => {
   const { isDeletePhotoModalOpen, closeDeletePhotoModal } = useUiStore();
-  const { activePhoto } = usePhotoStore();
+  const { password, onInputChange } = useForm(initialState);
+  const { activePhoto, deletePhoto } = usePhotoStore();
 
   const passwordPlaceholder = () => {
-    return activePhoto.label
+    return activePhoto?.label
       .split('')
       .map((letter) => '*')
       .join('');
@@ -16,6 +31,23 @@ export const DeletePhotoModal = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    if (password !== activePhoto?.label) {
+      Toast.fire({
+        toast: true,
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Wrong password!'
+      });
+      return;
+    }
+    Toast.fire({
+      toast: true,
+      icon: 'success',
+      title: 'Deleted!',
+      text: 'Your photo has been deleted.'
+    });
+    deletePhoto();
+    closeDeletePhotoModal();
   };
 
   const onHandleCancelClick = () => {
@@ -38,6 +70,8 @@ export const DeletePhotoModal = () => {
             placeholder={String(passwordPlaceholder())}
             name="password"
             className="text-input"
+            onChange={onInputChange}
+            value={password}
           />
         </div>
 

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getImageById } from '../photos/helpers/getImageById';
 import {
   onAddNewPhoto,
+  onDeletePhoto,
   onPhotoUploaded,
   onSetActivePhoto,
   onUploadingPhoto
@@ -30,6 +31,10 @@ export const usePhotoStore = () => {
     dispatch(onSetActivePhoto(photo[0]));
   };
 
+  const deletePhoto = () => {
+    dispatch(onDeletePhoto());
+  };
+
   return {
     //* Variables
     isUploading,
@@ -40,6 +45,7 @@ export const usePhotoStore = () => {
     addNewPhoto,
     uploadPhoto,
     photoUploaded,
-    setActivePhoto
+    setActivePhoto,
+    deletePhoto
   };
 };
