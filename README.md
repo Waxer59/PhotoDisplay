@@ -28,7 +28,7 @@ yarn deps
 
 ## 4. Run the project
 
-### You need to run the proyect with the command, on the root of the project:
+### You will have to run this command in the root of the project to run it
 
 ```
 yarn dev
