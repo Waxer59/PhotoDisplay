@@ -1,9 +1,18 @@
+import { usePhotoStore } from '../../../hooks/usePhotoStore';
 import { useUiStore } from '../../../hooks/useUiStore';
 import { PhotoModal } from '../../layouts/Modal/PhotoModal';
 import './DeletePhotoModal.css';
 
 export const DeletePhotoModal = () => {
   const { isDeletePhotoModalOpen, closeDeletePhotoModal } = useUiStore();
+  const { activePhoto } = usePhotoStore();
+
+  const passwordPlaceholder = () => {
+    return activePhoto.label
+      .split('')
+      .map((letter) => '*')
+      .join('');
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -22,11 +31,11 @@ export const DeletePhotoModal = () => {
 
         <div className="password-input-container">
           <label htmlFor="password" className="input-label">
-            password
+            Type <strong>{activePhoto?.label}</strong> to confirm
           </label>
           <input
             type="password"
-            placeholder="********"
+            placeholder={String(passwordPlaceholder())}
             name="password"
             className="text-input"
           />

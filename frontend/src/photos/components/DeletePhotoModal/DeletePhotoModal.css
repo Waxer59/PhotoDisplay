@@ -29,7 +29,7 @@
 }
 
 .input-label {
-  font-weight: 600;
+  font-weight: 400 !important;
   font-size: 1rem;
   padding-bottom: 10px;
 }

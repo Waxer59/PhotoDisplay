@@ -1,16 +1,19 @@
 import PropTypes from 'prop-types';
+import { usePhotoStore } from '../../../hooks/usePhotoStore';
 import { useUiStore } from '../../../hooks/useUiStore';
 import './PhotoItem.css';
 
-export const PhotoItem = ({ url, label }) => {
+export const PhotoItem = ({ url, label, id }) => {
   const { openDeletePhotoModal } = useUiStore();
-  const onHandleDeleteClick = () => {
+  const { setActivePhoto } = usePhotoStore();
+  const onHandleDeleteClick = (e) => {
     openDeletePhotoModal();
+    setActivePhoto(e);
   };
 
   return (
     <li className="photo">
-      <button className="btn-delete" onClick={onHandleDeleteClick}>
+      <button className="btn-delete" onClick={onHandleDeleteClick} name={id}>
         Delete
       </button>
       <span className="label">{label}</span>
@@ -22,9 +25,11 @@ export const PhotoItem = ({ url, label }) => {
 PhotoItem.propTypes = {
   url: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired
+  // id: PropTypes.string.isRequired
 };
 
 PhotoItem.defaultProps = {
   img: '',
-  label: ''
+  label: '',
+  id: ''
 };

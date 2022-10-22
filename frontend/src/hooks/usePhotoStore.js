@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { getImageById } from '../photos/helpers/getImageById';
 import {
   onAddNewPhoto,
   onPhotoUploaded,
@@ -24,8 +25,9 @@ export const usePhotoStore = () => {
     dispatch(onPhotoUploaded());
   };
 
-  const setActivePhoto = (photo) => {
-    dispatch(onSetActivePhoto(photo));
+  const setActivePhoto = (event) => {
+    const photo = getImageById(photos, event.target.name);
+    dispatch(onSetActivePhoto(photo[0]));
   };
 
   return {
