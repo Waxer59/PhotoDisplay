@@ -2,9 +2,15 @@ import PropTypes from 'prop-types';
 import './PhotoItem.css';
 
 export const PhotoItem = ({ url, label }) => {
+  const onHandleDeleteClick = () => {
+    console.log('onHandleDeleteClick');
+  };
+
   return (
     <li className="photo">
-      <button className="btn-delete">Delete</button>
+      <button className="btn-delete" onClick={onHandleDeleteClick}>
+        Delete
+      </button>
       <span className="label">{label}</span>
       <img src={url} alt={label} />
     </li>

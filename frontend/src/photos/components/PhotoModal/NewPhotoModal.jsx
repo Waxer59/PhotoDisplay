@@ -2,7 +2,8 @@ import Modal from 'react-modal';
 import { useForm } from '../../../hooks/useForm';
 import { usePhotoStore } from '../../../hooks/usePhotoStore';
 import { useUiStore } from '../../../hooks/useUiStore';
-import './PhotoModal.css';
+import { PhotoModal } from '../../layouts/Modal/PhotoModal';
+import './NewPhotoModal.css';
 
 const customStyles = {
   content: {
@@ -20,7 +21,7 @@ const initialState = {
 
 Modal.setAppElement('#root');
 
-export const PhotoModal = () => {
+export const NewPhotoModal = () => {
   const { onInputChange, label, photoUrl, onResetForm } = useForm(initialState);
   const { addNewPhoto } = usePhotoStore();
 
@@ -49,13 +50,7 @@ export const PhotoModal = () => {
   };
 
   return (
-    <Modal
-      isOpen={isPhotoModalOpen}
-      onRequestClose={closePhotoModal}
-      style={customStyles}
-      className="modal"
-      overlayClassName="modal-fondo"
-      closeTimeoutMS={200}>
+    <PhotoModal isOpen={isPhotoModalOpen} onRequestClose={closePhotoModal}>
       <form className="photo-modal-form" onSubmit={onSubmit}>
         <h2 className="photo-modal-title">Add a new Photo</h2>
 
@@ -97,6 +92,6 @@ export const PhotoModal = () => {
           </button>
         </div>
       </form>
-    </Modal>
+    </PhotoModal>
   );
 };

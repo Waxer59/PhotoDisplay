@@ -1,5 +1,5 @@
 import { Navbar } from '../../ui/Navbar/Navbar';
-import { PhotoModal } from '../components/PhotoModal/PhotoModal';
+import { NewPhotoModal } from '../components/PhotoModal/NewPhotoModal';
 import { PhotosList } from '../components/PhotosList/PhotosList';
 
 export const PhotosPage = () => {
@@ -7,7 +7,7 @@ export const PhotosPage = () => {
     <>
       <Navbar />
       <PhotosList />
-      <PhotoModal />
+      <NewPhotoModal />
     </>
   );
 };
