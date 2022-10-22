@@ -20,7 +20,7 @@ export const PhotoItem = ({ url, label }) => {
 };
 
 PhotoItem.propTypes = {
-  img: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired
 };
 

@@ -6,7 +6,6 @@
 }
 
 .photo img {
-  cursor: zoom-in;
   transition: all 0.3s ease;
 }
 

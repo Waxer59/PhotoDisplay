@@ -4,7 +4,8 @@ export const uiSlice = createSlice({
   name: 'ui',
   initialState: {
     isNewPhotoModalOpen: false,
-    isDeletePhotoModalOpen: false
+    isDeletePhotoModalOpen: false,
+    searchingPhotoQuery: ''
   },
   reducers: {
     onOpenNewPhotoModal: (state) => {
@@ -18,6 +19,9 @@ export const uiSlice = createSlice({
     },
     onCloseDeletePhotoModal: (state) => {
       state.isDeletePhotoModalOpen = false;
+    },
+    onSearchPhoto: (state, { payload }) => {
+      state.searchingPhotoQuery = payload;
     }
   }
 });
@@ -26,5 +30,6 @@ export const {
   onOpenNewPhotoModal,
   onCloseNewPhotoModal,
   onCloseDeletePhotoModal,
-  onOpenDeletePhotoModal
+  onOpenDeletePhotoModal,
+  onSearchPhoto
 } = uiSlice.actions;
