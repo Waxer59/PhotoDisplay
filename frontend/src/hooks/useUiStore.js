@@ -1,30 +1,43 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { onClosePhotoModal, onOpenPhotoModal } from '../store/ui/uiSlice';
+import {
+  onCloseDeletePhotoModal,
+  onCloseNewPhotoModal,
+  onOpenDeletePhotoModal,
+  onOpenNewPhotoModal
+} from '../store/ui/uiSlice';
 
 export const useUiStore = () => {
   const dispatch = useDispatch();
 
-  const { isPhotoModalOpen } = useSelector((state) => state.ui);
+  const { isNewPhotoModalOpen, isDeletePhotoModalOpen } = useSelector(
+    (state) => state.ui
+  );
 
-  const openPhotoModal = () => {
-    dispatch(onOpenPhotoModal());
+  const openNewPhotoModal = () => {
+    dispatch(onOpenNewPhotoModal());
   };
 
-  const closePhotoModal = () => {
-    dispatch(onClosePhotoModal());
+  const closeNewPhotoModal = () => {
+    dispatch(onCloseNewPhotoModal());
   };
 
-  const togglePhotoModal = () => {
-    return isPhotoModalOpen ? closePhotoModal() : openPhotoModal();
+  const openDeletePhotoModal = () => {
+    dispatch(onOpenDeletePhotoModal());
+  };
+
+  const closeDeletePhotoModal = () => {
+    dispatch(onCloseDeletePhotoModal());
   };
 
   return {
     //* Variables
-    isPhotoModalOpen,
+    isNewPhotoModalOpen,
+    isDeletePhotoModalOpen,
 
     //* Functions
-    openPhotoModal,
-    closePhotoModal,
-    togglePhotoModal
+    openNewPhotoModal,
+    closeNewPhotoModal,
+    openDeletePhotoModal,
+    closeDeletePhotoModal
   };
 };

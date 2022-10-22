@@ -3,10 +3,10 @@ import { useUiStore } from '../../hooks/useUiStore';
 import './Navbar.css';
 
 export const Navbar = () => {
-  const { openPhotoModal } = useUiStore();
+  const { openNewPhotoModal } = useUiStore();
 
   const handleAddPhotoClick = () => {
-    openPhotoModal();
+    openNewPhotoModal();
   };
 
   return (

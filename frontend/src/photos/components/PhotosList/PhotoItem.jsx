@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
+import { useUiStore } from '../../../hooks/useUiStore';
 import './PhotoItem.css';
 
 export const PhotoItem = ({ url, label }) => {
+  const { openDeletePhotoModal } = useUiStore();
   const onHandleDeleteClick = () => {
-    console.log('onHandleDeleteClick');
+    openDeletePhotoModal();
   };
 
   return (

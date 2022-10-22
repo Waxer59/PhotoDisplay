@@ -5,15 +5,6 @@ import { useUiStore } from '../../../hooks/useUiStore';
 import { PhotoModal } from '../../layouts/Modal/PhotoModal';
 import './NewPhotoModal.css';
 
-const customStyles = {
-  content: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    margin: '0 auto'
-  }
-};
-
 const initialState = {
   label: '',
   photoUrl: ''
@@ -25,10 +16,9 @@ export const NewPhotoModal = () => {
   const { onInputChange, label, photoUrl, onResetForm } = useForm(initialState);
   const { addNewPhoto } = usePhotoStore();
 
-  const { isPhotoModalOpen, closePhotoModal } = useUiStore();
+  const { isNewPhotoModalOpen, closeNewPhotoModal } = useUiStore();
 
   const onSubmit = (e) => {
-    console.log('onSubmit');
     e.preventDefault();
     const newPhoto = {
       id: Date.now(),
@@ -37,7 +27,7 @@ export const NewPhotoModal = () => {
       date: new Date().getTime()
     };
     addNewPhoto(newPhoto);
-    closePhotoModal();
+    closeNewPhotoModal();
     onResetForm();
   };
 
@@ -49,8 +39,15 @@ export const NewPhotoModal = () => {
     onInputChange(e);
   };
 
+  const onHandleCancelClick = () => {
+    closeNewPhotoModal();
+    onResetForm();
+  };
+
   return (
-    <PhotoModal isOpen={isPhotoModalOpen} onRequestClose={closePhotoModal}>
+    <PhotoModal
+      isOpen={isNewPhotoModalOpen}
+      onRequestClose={closeNewPhotoModal}>
       <form className="photo-modal-form" onSubmit={onSubmit}>
         <h2 className="photo-modal-title">Add a new Photo</h2>
 
@@ -83,7 +80,7 @@ export const NewPhotoModal = () => {
         <div className="btns-inputs">
           <button
             className="btn-cancel"
-            onClick={closePhotoModal}
+            onClick={onHandleCancelClick}
             type="button">
             Cancel
           </button>

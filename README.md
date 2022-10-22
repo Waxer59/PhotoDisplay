@@ -25,7 +25,6 @@ This command will run both proyects in parallel, the server and the client.
 - React
 - Redux
 - React Icons
-- PhotoSwipe
 
 ## Backend
 

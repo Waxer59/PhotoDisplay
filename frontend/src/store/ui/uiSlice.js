@@ -3,16 +3,28 @@ import { createSlice } from '@reduxjs/toolkit';
 export const uiSlice = createSlice({
   name: 'ui',
   initialState: {
-    isPhotoModalOpen: false
+    isNewPhotoModalOpen: false,
+    isDeletePhotoModalOpen: false
   },
   reducers: {
-    onOpenPhotoModal: (state) => {
-      state.isPhotoModalOpen = true;
+    onOpenNewPhotoModal: (state) => {
+      state.isNewPhotoModalOpen = true;
     },
-    onClosePhotoModal: (state) => {
-      state.isPhotoModalOpen = false;
+    onCloseNewPhotoModal: (state) => {
+      state.isNewPhotoModalOpen = false;
+    },
+    onOpenDeletePhotoModal: (state) => {
+      state.isDeletePhotoModalOpen = true;
+    },
+    onCloseDeletePhotoModal: (state) => {
+      state.isDeletePhotoModalOpen = false;
     }
   }
 });
 
-export const { onOpenPhotoModal, onClosePhotoModal } = uiSlice.actions;
+export const {
+  onOpenNewPhotoModal,
+  onCloseNewPhotoModal,
+  onCloseDeletePhotoModal,
+  onOpenDeletePhotoModal
+} = uiSlice.actions;
