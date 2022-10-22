@@ -24,7 +24,7 @@ yarn deps
 
 ## 3. Configure Frontend
 
-### 1. Configure the environment variables by renaming the file `.template.env` to `.env` in the root of the frontend folder and filling the variables with the values you want.
+### Configure the environment variables by renaming the file `.template.env` to `.env` in the root of the frontend folder and filling the variables with the values you want.
 
 ## 4. Run the project
 
