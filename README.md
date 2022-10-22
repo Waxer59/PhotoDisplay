@@ -4,13 +4,19 @@ PhotoDisplay is a simple photo gallery that allows you to display photos from a 
 
 # How to run de proyect
 
-First you need to install the dependencies with the command, on the root of the project:
+First you need to install the dependencies of the repo running, on the root of the proyect:
+
+```
+yarn
+```
+
+then you need to install the dependencies of backend and frontend with the command, on the root of the project:
 
 ```
 yarn deps
 ```
 
-Then you need to run the proyect with the command, on the root of the project:
+And finally you need to run the proyect with the command, on the root of the project:
 
 ```
 yarn dev
