@@ -3,27 +3,19 @@ import { getImageById } from '../photos/helpers/getImageById';
 import {
   onAddNewPhoto,
   onDeletePhoto,
-  onPhotoUploaded,
-  onSetActivePhoto,
-  onUploadingPhoto
+  onLoadedPhotos,
+  onLoadingPhotos,
+  onSetActivePhoto
 } from '../store/photos/photosSlice';
 
 export const usePhotoStore = () => {
-  const { isUploading, photos, activePhoto } = useSelector(
+  const { isUploading, photos, activePhoto, isLoading } = useSelector(
     (state) => state.photos
   );
   const dispatch = useDispatch();
 
   const addNewPhoto = (photo) => {
     dispatch(onAddNewPhoto(photo));
-  };
-
-  const uploadPhoto = () => {
-    dispatch(onUploadingPhoto());
-  };
-
-  const photoUploaded = () => {
-    dispatch(onPhotoUploaded());
   };
 
   const setActivePhoto = (event) => {
@@ -35,17 +27,26 @@ export const usePhotoStore = () => {
     dispatch(onDeletePhoto());
   };
 
+  const loadingPhotos = () => {
+    dispatch(onLoadingPhotos());
+  };
+
+  const lodadedPhotos = () => {
+    dispatch(onLoadedPhotos());
+  };
+
   return {
     //* Variables
     isUploading,
     photos,
     activePhoto,
+    isLoading,
 
     //* Functions
     addNewPhoto,
-    uploadPhoto,
-    photoUploaded,
     setActivePhoto,
-    deletePhoto
+    deletePhoto,
+    loadingPhotos,
+    lodadedPhotos
   };
 };

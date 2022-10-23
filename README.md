@@ -43,6 +43,7 @@ yarn dev
 - React
 - Redux
 - React Icons
+- React Spinners
 
 ## Backend
 

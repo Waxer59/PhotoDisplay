@@ -1,8 +1,8 @@
 import Modal from 'react-modal';
-import Swal from 'sweetalert2';
 import { useForm } from '../../../hooks/useForm';
 import { usePhotoStore } from '../../../hooks/usePhotoStore';
 import { useUiStore } from '../../../hooks/useUiStore';
+import { Toast } from '../../helpers/swal';
 import { PhotoModal } from '../../layouts/Modal/PhotoModal';
 import './NewPhotoModal.css';
 
@@ -11,19 +11,11 @@ const initialState = {
   photoUrl: ''
 };
 
-const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 3000,
-  timerProgressBar: true
-});
-
 Modal.setAppElement('#root');
 
 export const NewPhotoModal = () => {
   const { onInputChange, label, photoUrl, onResetForm } = useForm(initialState);
-  const { addNewPhoto } = usePhotoStore();
+  const { addNewPhoto, isUploading } = usePhotoStore();
 
   const { isNewPhotoModalOpen, closeNewPhotoModal } = useUiStore();
 
@@ -47,6 +39,12 @@ export const NewPhotoModal = () => {
     addNewPhoto(newPhoto);
     closeNewPhotoModal();
     onResetForm();
+    Toast.fire({
+      toast: true,
+      icon: 'success',
+      title: 'Success!',
+      text: 'Your photo has been added.'
+    });
   };
 
   const onHandlePhotoUrlChange = (e) => {
@@ -102,7 +100,7 @@ export const NewPhotoModal = () => {
             type="button">
             Cancel
           </button>
-          <button className="btn-submit" type="submit">
+          <button className="btn-submit" type="submit" disabled={isUploading}>
             Submit
           </button>
         </div>

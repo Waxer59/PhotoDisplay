@@ -1,21 +1,13 @@
-import Swal from 'sweetalert2';
 import { useForm } from '../../../hooks/useForm';
 import { usePhotoStore } from '../../../hooks/usePhotoStore';
 import { useUiStore } from '../../../hooks/useUiStore';
 import { PhotoModal } from '../../layouts/Modal/PhotoModal';
+import { Toast } from '../../helpers/swal';
 import './DeletePhotoModal.css';
 
 const initialState = {
   password: ''
 };
-
-const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 3000,
-  timerProgressBar: true
-});
 
 export const DeletePhotoModal = () => {
   const { isDeletePhotoModalOpen, closeDeletePhotoModal } = useUiStore();

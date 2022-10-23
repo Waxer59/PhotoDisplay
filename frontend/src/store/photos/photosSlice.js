@@ -4,11 +4,13 @@ export const photosSlice = createSlice({
   name: 'photos',
   initialState: {
     isUploading: false,
+    isLoading: false,
     photos: [],
     activePhoto: null
   },
   reducers: {
     onAddNewPhoto: (state, { payload }) => {
+      state.isUploading = true;
       const newPhoto = {
         id: payload.id,
         url: payload.url,
@@ -16,11 +18,6 @@ export const photosSlice = createSlice({
         date: payload.date
       };
       state.photos.push(newPhoto);
-    },
-    onUploadingPhoto: (state) => {
-      state.isUploading = true;
-    },
-    onPhotoUploaded: (state) => {
       state.isUploading = false;
     },
     onSetActivePhoto: (state, { payload }) => {
@@ -34,14 +31,20 @@ export const photosSlice = createSlice({
       });
       state.photos = newPhotos;
       state.activePhoto = null;
+    },
+    onLoadingPhotos: (state) => {
+      state.isLoading = true;
+    },
+    onLoadedPhotos: (state) => {
+      state.isLoading = false;
     }
   }
 });
 
 export const {
   onAddNewPhoto,
-  onPhotoUploaded,
-  onUploadingPhoto,
   onSetActivePhoto,
-  onDeletePhoto
+  onDeletePhoto,
+  onLoadedPhotos,
+  onLoadingPhotos
 } = photosSlice.actions;

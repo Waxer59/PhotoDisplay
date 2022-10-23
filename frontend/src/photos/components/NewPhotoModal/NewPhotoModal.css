@@ -63,3 +63,8 @@
   border-radius: 12px;
   margin-left: 24px;
 }
+
+.btn-submit:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
