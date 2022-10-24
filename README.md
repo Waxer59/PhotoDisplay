@@ -22,6 +22,24 @@ yarn deps
 
 ## 2. Configure Backend
 
+### Configure the environment variables by renaming the file `.template.env` to `.env` in the root of the frontend folder and filling the variables with the values you want.
+
+### Run the database with docker:
+
+1. Create the docker image to run the database with the command (Important to have the docker daemon open):
+
+```
+docker-compose -f docker-compose.yml --env-file .env up --build
+```
+
+2. If the image has already been created, use this command to create the database:
+
+```
+docker-compose up -d
+```
+
+### All endpoints are stored in the swagger documentation, in /api you can see all endpoints.
+
 ## 3. Configure Frontend
 
 ### Configure the environment variables by renaming the file `.template.env` to `.env` in the root of the frontend folder and filling the variables with the values you want.
@@ -48,5 +66,6 @@ yarn dev
 ## Backend
 
 - Nestjs
-- MongoDB
+- Postgres
 - Docker
+- swagger
