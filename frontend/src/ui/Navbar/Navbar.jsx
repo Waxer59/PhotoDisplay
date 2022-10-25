@@ -1,23 +1,35 @@
 import { useEffect } from 'react';
 import { IoIosSearch } from 'react-icons/io';
+import { useLocation, useNavigate } from 'react-router-dom';
+import queryString from 'query-string';
 import { useForm } from '../../hooks/useForm';
 import { useUiStore } from '../../hooks/useUiStore';
 import './Navbar.css';
 
-const initialForm = {
+const initialState = {
   search: ''
 };
 
 export const Navbar = () => {
-  const { search, onInputChange } = useForm(initialForm);
+  const navigate = useNavigate();
+  const location = useLocation();
   const { openNewPhotoModal, searchPhoto } = useUiStore();
+
+  const { q = '' } = queryString.parse(location.search);
+
+  const { search, onInputChange, onValueChange } = useForm(initialState);
 
   const handleAddPhotoClick = () => {
     openNewPhotoModal();
   };
 
   useEffect(() => {
+    onValueChange('search', q);
+  }, []);
+
+  useEffect(() => {
     searchPhoto(search);
+    navigate(`?q=${search}`);
   }, [search]);
 
   return (
