@@ -20,9 +20,10 @@ export const PhotoItem = ({ url, label, id }) => {
       <img
         src={url}
         alt={label}
+        loading="lazy"
         onError={({ currentTarget }) => {
           currentTarget.onerror = null;
-          currentTarget.src = '../../public/images/image-not-found.png';
+          currentTarget.src = '../../images/image-not-found.png';
         }}
       />
     </li>

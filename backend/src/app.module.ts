@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ImagesModule } from './images/images.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: process.env.DB_PASSWORD,
       autoLoadEntities: true, // Cargar automaticamente las entidades
       synchronize: true // sincronizar cualquier cambio
-    })
+    }),
+    SeedModule
   ],
   controllers: [],
   providers: []

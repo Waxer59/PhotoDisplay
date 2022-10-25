@@ -40,6 +40,8 @@ docker-compose up -d
 
 ### All endpoints are stored in the swagger documentation, in /api you can see all endpoints.
 
+### Run /seed to create the initial data in the database.
+
 ## 3. Configure Frontend
 
 ### Configure the environment variables by renaming the file `.template.env` to `.env` in the root of the frontend folder and filling the variables with the values you want.
