@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+import imagesApi from '../api/imagesApi';
 import { getImageById } from '../photos/helpers/getImageById';
 import {
   onAddNewPhoto,
   onDeletePhoto,
-  onLoadedPhotos,
   onLoadingPhotos,
-  onSetActivePhoto
+  onSetActivePhoto,
+  onSetIsLoading
 } from '../store/photos/photosSlice';
 
 export const usePhotoStore = () => {
@@ -14,8 +16,14 @@ export const usePhotoStore = () => {
   );
   const dispatch = useDispatch();
 
-  const addNewPhoto = (photo) => {
-    dispatch(onAddNewPhoto(photo));
+  const startAddNewPhoto = async (photo) => {
+    try {
+      const { data } = await imagesApi.post('/images', photo);
+      dispatch(onAddNewPhoto(data));
+    } catch (error) {
+      console.log(error);
+      Swal.fire('Error when saving', error.response.data.msg, 'error');
+    }
   };
 
   const setActivePhoto = (event) => {
@@ -23,16 +31,26 @@ export const usePhotoStore = () => {
     dispatch(onSetActivePhoto(photo[0]));
   };
 
-  const deletePhoto = () => {
-    dispatch(onDeletePhoto());
+  const startDeletetingPhoto = async () => {
+    try {
+      const { id } = activePhoto;
+      await imagesApi.delete(`/images/${id}`);
+      dispatch(onDeletePhoto());
+    } catch (error) {
+      console.log(error);
+      Swal.fire('Error when deleting', error.response.data.msg, 'error');
+    }
   };
 
-  const loadingPhotos = () => {
-    dispatch(onLoadingPhotos());
-  };
-
-  const lodadedPhotos = () => {
-    dispatch(onLoadedPhotos());
+  const startLoadingPhotos = async () => {
+    try {
+      dispatch(onSetIsLoading());
+      const { data } = await imagesApi.get('/images');
+      dispatch(onLoadingPhotos(data.images));
+    } catch (error) {
+      console.log(error);
+      Swal.fire('Error when loading', error.response.data.msg, 'error');
+    }
   };
 
   return {
@@ -43,10 +61,9 @@ export const usePhotoStore = () => {
     isLoading,
 
     //* Functions
-    addNewPhoto,
+    startAddNewPhoto,
     setActivePhoto,
-    deletePhoto,
-    loadingPhotos,
-    lodadedPhotos
+    startDeletetingPhoto,
+    startLoadingPhotos
   };
 };

@@ -5,14 +5,20 @@ import { NewPhotoModal } from '../components/NewPhotoModal/NewPhotoModal';
 import { PhotosList } from '../components/PhotosList/PhotosList';
 import { HashLoader } from 'react-spinners';
 import { usePhotoStore } from '../../hooks/usePhotoStore';
+import { useEffect } from 'react';
 
 export const PhotosPage = () => {
   const { searchingPhotoQuery } = useUiStore();
-  const { loading } = usePhotoStore();
+  const { isLoading, startLoadingPhotos } = usePhotoStore();
+
+  useEffect(() => {
+    startLoadingPhotos();
+  }, []);
+
   return (
     <>
       <Navbar />
-      {loading ? (
+      {isLoading ? (
         <HashLoader color="#ccc" style={{ margin: '0 auto' }} />
       ) : (
         <PhotosList query={searchingPhotoQuery} />

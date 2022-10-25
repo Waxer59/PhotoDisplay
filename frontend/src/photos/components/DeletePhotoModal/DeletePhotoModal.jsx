@@ -11,8 +11,8 @@ const initialState = {
 
 export const DeletePhotoModal = () => {
   const { isDeletePhotoModalOpen, closeDeletePhotoModal } = useUiStore();
-  const { password, onInputChange } = useForm(initialState);
-  const { activePhoto, deletePhoto } = usePhotoStore();
+  const { password, onInputChange, onResetForm } = useForm(initialState);
+  const { activePhoto, startDeletetingPhoto } = usePhotoStore();
 
   const passwordPlaceholder = () => {
     return activePhoto?.label
@@ -38,7 +38,8 @@ export const DeletePhotoModal = () => {
       title: 'Deleted!',
       text: 'Your photo has been deleted.'
     });
-    deletePhoto();
+    startDeletetingPhoto();
+    onResetForm();
     closeDeletePhotoModal();
   };
 

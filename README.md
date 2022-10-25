@@ -68,4 +68,4 @@ yarn dev
 - Nestjs
 - Postgres
 - Docker
-- swagger
+- Swagger

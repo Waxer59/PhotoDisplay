@@ -3,22 +3,15 @@ import { createSlice } from '@reduxjs/toolkit';
 export const photosSlice = createSlice({
   name: 'photos',
   initialState: {
-    isUploading: false,
     isLoading: false,
     photos: [],
     activePhoto: null
   },
   reducers: {
     onAddNewPhoto: (state, { payload }) => {
-      state.isUploading = true;
-      const newPhoto = {
-        id: payload.id,
-        url: payload.url,
-        label: payload.label,
-        date: payload.date
-      };
-      state.photos.push(newPhoto);
-      state.isUploading = false;
+      state.isLoading = true;
+      state.photos.push(payload);
+      state.isLoading = false;
     },
     onSetActivePhoto: (state, { payload }) => {
       state.activePhoto = payload;
@@ -32,11 +25,18 @@ export const photosSlice = createSlice({
       state.photos = newPhotos;
       state.activePhoto = null;
     },
-    onLoadingPhotos: (state) => {
+    onLoadingPhotos: (state, { payload = [] }) => {
       state.isLoading = true;
-    },
-    onLoadedPhotos: (state) => {
+      payload.forEach((photo) => {
+        const exists = state.photos.some((dbPhoto) => dbPhoto.id === photo.id);
+        if (!exists) {
+          state.photos.push(photo);
+        }
+      });
       state.isLoading = false;
+    },
+    onSetIsLoading: (state) => {
+      state.isLoading = true;
     }
   }
 });
@@ -45,6 +45,6 @@ export const {
   onAddNewPhoto,
   onSetActivePhoto,
   onDeletePhoto,
-  onLoadedPhotos,
-  onLoadingPhotos
+  onLoadingPhotos,
+  onSetIsLoading
 } = photosSlice.actions;

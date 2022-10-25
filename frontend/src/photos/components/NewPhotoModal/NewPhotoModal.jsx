@@ -15,12 +15,13 @@ Modal.setAppElement('#root');
 
 export const NewPhotoModal = () => {
   const { onInputChange, label, photoUrl, onResetForm } = useForm(initialState);
-  const { addNewPhoto, isUploading } = usePhotoStore();
+  const { startAddNewPhoto, isUploading } = usePhotoStore();
 
   const { isNewPhotoModalOpen, closeNewPhotoModal } = useUiStore();
 
   const onSubmit = (e) => {
     e.preventDefault();
+
     if (label.length < 3 || photoUrl.length < 3) {
       Toast.fire({
         toast: true,
@@ -30,13 +31,21 @@ export const NewPhotoModal = () => {
       });
       return;
     }
-    const newPhoto = {
-      id: Date.now(),
+
+    if (label.length > 20) {
+      Toast.fire({
+        toast: true,
+        icon: 'error',
+        title: 'Oops...',
+        text: 'The label must be less than 20 characters!'
+      });
+      return;
+    }
+
+    startAddNewPhoto({
       label,
-      url: photoUrl,
-      date: new Date().getTime()
-    };
-    addNewPhoto(newPhoto);
+      url: photoUrl
+    });
     closeNewPhotoModal();
     onResetForm();
     Toast.fire({
