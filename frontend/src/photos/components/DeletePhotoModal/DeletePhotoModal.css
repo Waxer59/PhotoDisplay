@@ -40,6 +40,7 @@
   display: flex;
   justify-content: end;
   margin-bottom: 23px;
+  gap: 24px;
 }
 
 .btn-cancel {
@@ -57,5 +58,4 @@
   font-weight: 600;
   padding: 15px;
   border-radius: 12px;
-  margin-left: 24px;
 }

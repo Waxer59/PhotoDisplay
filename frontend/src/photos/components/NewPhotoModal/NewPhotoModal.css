@@ -63,10 +63,23 @@
   font-weight: 600;
   padding: 15px;
   border-radius: 12px;
-  margin-left: 24px;
 }
 
 .btn-submit:disabled {
   opacity: 0.75;
   cursor: not-allowed;
+}
+
+@media (max-width: 500px) {
+  .ReactModal__Content{
+    margin: 10px !important;
+  }
+}
+
+@media (max-width: 250px) {
+  .btns-inputs{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
