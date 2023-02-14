@@ -3,15 +3,15 @@ import {
   onCloseDeletePhotoModal,
   onCloseNewPhotoModal,
   onOpenDeletePhotoModal,
-  onOpenNewPhotoModal,
-  onSearchPhoto
+  onOpenNewPhotoModal
 } from '../store/ui/uiSlice';
 
 export const useUiStore = () => {
   const dispatch = useDispatch();
 
-  const { isNewPhotoModalOpen, isDeletePhotoModalOpen, searchingPhotoQuery } =
-    useSelector((state) => state.ui);
+  const { isNewPhotoModalOpen, isDeletePhotoModalOpen } = useSelector(
+    (state) => state.ui
+  );
 
   const openNewPhotoModal = () => {
     dispatch(onOpenNewPhotoModal());
@@ -29,21 +29,15 @@ export const useUiStore = () => {
     dispatch(onCloseDeletePhotoModal());
   };
 
-  const searchPhoto = (query) => {
-    dispatch(onSearchPhoto(query));
-  };
-
   return {
     //* Variables
     isNewPhotoModalOpen,
     isDeletePhotoModalOpen,
-    searchingPhotoQuery,
 
     //* Functions
     openNewPhotoModal,
     closeNewPhotoModal,
     openDeletePhotoModal,
-    closeDeletePhotoModal,
-    searchPhoto
+    closeDeletePhotoModal
   };
 };
