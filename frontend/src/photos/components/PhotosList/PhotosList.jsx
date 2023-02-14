@@ -6,9 +6,9 @@ import { getImagesByLabel } from '../../helpers/getImagesByLabel';
 
 export const PhotosList = ({ query }) => {
   const { photos } = usePhotoStore();
-  const images = getImagesByLabel(photos, query);
+  const filteredImages = getImagesByLabel(photos, query);
   const showImageNotFound =
-    images.length === 0 && photos.length > 0 && query.length > 0;
+  filteredImages.length === 0 && photos.length > 0 && query.length > 0;
 
   return (
     <div className="photos-container">
@@ -16,7 +16,7 @@ export const PhotosList = ({ query }) => {
         <h2 className="image-not-found">Upss... Image not found :(</h2>
       ) : (
         <ul className="photos" id="photos">
-          {images.map((photo) => (
+          {filteredImages.map((photo) => (
             <PhotoItem key={photo.id} {...photo} />
           ))}
         </ul>
