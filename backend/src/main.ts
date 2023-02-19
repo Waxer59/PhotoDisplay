@@ -22,7 +22,6 @@ async function bootstrap() {
     .setTitle('PhotoDisplay Api')
     .setDescription('Here you can see all the endpoints')
     .setVersion('1.0')
-    .addTag('Photos')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
