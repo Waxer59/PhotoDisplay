@@ -26,14 +26,7 @@ yarn deps
 
 ### Run the database with docker:
 
-1. Create the docker image to run the database with the command (Important to have the docker daemon open):
-
-```
-docker-compose -f docker-compose.yml --env-file .env up --build
-```
-
-2. If the image has already been created, use this command to create the database:
-
+1. Create the docker container to run the database with the command (Important to have the docker daemon open):
 ```
 docker-compose up -d
 ```
