@@ -17,11 +17,9 @@ export const photosSlice = createSlice({
       state.activePhoto = payload;
     },
     onDeletePhoto: (state) => {
-      const newPhotos = state.photos.filter((photo) => {
-        if (photo.id !== state.activePhoto.id) {
-          return photo;
-        }
-      });
+      const newPhotos = state.photos.filter(
+        (photo) => photo.id !== state.activePhoto.id
+      );
       state.photos = newPhotos;
       state.activePhoto = null;
     },

@@ -1,14 +1,14 @@
-import { PhotoItem } from './PhotoItem';
 import PropTypes from 'prop-types';
+import { PhotoItem } from './PhotoItem';
 import './PhotosList.css';
 import { usePhotoStore } from '../../../hooks/usePhotoStore';
 import { getImagesByLabel } from '../../helpers/getImagesByLabel';
 
-export const PhotosList = ({ query }) => {
+export function PhotosList({ query }) {
   const { photos } = usePhotoStore();
   const filteredImages = getImagesByLabel(photos, query);
   const showImageNotFound =
-  filteredImages.length === 0 && photos.length > 0 && query.length > 0;
+    filteredImages.length === 0 && photos.length > 0 && query.length > 0;
 
   return (
     <div className="photos-container">
@@ -23,7 +23,7 @@ export const PhotosList = ({ query }) => {
       )}
     </div>
   );
-};
+}
 
 PhotosList.propTypes = {
   query: PropTypes.string

@@ -3,7 +3,7 @@ import { usePhotoStore } from '../../../hooks/usePhotoStore';
 import { useUiStore } from '../../../hooks/useUiStore';
 import './PhotoItem.css';
 
-export const PhotoItem = ({ url, label, id }) => {
+export function PhotoItem({ url, label, id }) {
   const { openDeletePhotoModal } = useUiStore();
   const { setActivePhoto } = usePhotoStore();
   const onHandleDeleteClick = (e) => {
@@ -28,16 +28,10 @@ export const PhotoItem = ({ url, label, id }) => {
       />
     </li>
   );
-};
+}
 
 PhotoItem.propTypes = {
   url: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired
-  // id: PropTypes.string.isRequired
-};
-
-PhotoItem.defaultProps = {
-  img: '',
-  label: '',
-  id: ''
+  label: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
 };

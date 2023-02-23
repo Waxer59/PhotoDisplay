@@ -1,19 +1,19 @@
 import queryString from 'query-string';
+import { HashLoader } from 'react-spinners';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Navbar } from '../../ui/Navbar/Navbar';
 import { DeletePhotoModal } from '../components/DeletePhotoModal/DeletePhotoModal';
 import { NewPhotoModal } from '../components/NewPhotoModal/NewPhotoModal';
 import { PhotosList } from '../components/PhotosList/PhotosList';
-import { HashLoader } from 'react-spinners';
 import { usePhotoStore } from '../../hooks/usePhotoStore';
-import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 
 const initialState = {
   searchInputValue: ''
 };
 
-export const PhotosPage = () => {
+export function PhotosPage() {
   const { isLoading, startLoadingPhotos } = usePhotoStore();
   const navigate = useNavigate();
   const location = useLocation();
@@ -57,4 +57,4 @@ export const PhotosPage = () => {
       <DeletePhotoModal />
     </>
   );
-};
+}

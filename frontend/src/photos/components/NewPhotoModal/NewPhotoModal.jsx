@@ -13,7 +13,7 @@ const initialState = {
 
 Modal.setAppElement('#root');
 
-export const NewPhotoModal = () => {
+export function NewPhotoModal() {
   const { onInputChange, label, photoUrl, onResetForm } = useForm(initialState);
   const { startAddNewPhoto, isUploading } = usePhotoStore();
 
@@ -116,4 +116,4 @@ export const NewPhotoModal = () => {
       </form>
     </PhotoModal>
   );
-};
+}

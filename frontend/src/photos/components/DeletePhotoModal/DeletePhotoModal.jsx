@@ -9,17 +9,16 @@ const initialState = {
   password: ''
 };
 
-export const DeletePhotoModal = () => {
+export function DeletePhotoModal() {
   const { isDeletePhotoModalOpen, closeDeletePhotoModal } = useUiStore();
   const { password, onInputChange, onResetForm } = useForm(initialState);
   const { activePhoto, startDeletetingPhoto } = usePhotoStore();
 
-  const passwordPlaceholder = () => {
-    return activePhoto?.label
+  const passwordPlaceholder = () =>
+    activePhoto?.label
       .split('')
-      .map((letter) => '*')
+      .map(() => '*')
       .join('');
-  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -80,4 +79,4 @@ export const DeletePhotoModal = () => {
       </form>
     </PhotoModal>
   );
-};
+}

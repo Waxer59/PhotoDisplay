@@ -2,7 +2,7 @@ import { IoIosSearch } from 'react-icons/io';
 import { useUiStore } from '../../hooks/useUiStore';
 import './Navbar.css';
 
-export const Navbar = ({ children }) => {
+export function Navbar({ children }) {
   const { openNewPhotoModal } = useUiStore();
   const handleAddPhotoClick = () => {
     openNewPhotoModal();
@@ -28,4 +28,4 @@ export const Navbar = ({ children }) => {
       </div>
     </nav>
   );
-};
+}

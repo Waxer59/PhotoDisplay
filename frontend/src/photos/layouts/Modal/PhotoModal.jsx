@@ -12,7 +12,7 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export const PhotoModal = ({ children, isOpen, onRequestClose }) => {
+export function PhotoModal({ children, isOpen, onRequestClose }) {
   return (
     <Modal
       isOpen={isOpen}
@@ -24,4 +24,4 @@ export const PhotoModal = ({ children, isOpen, onRequestClose }) => {
       {children}
     </Modal>
   );
-};
+}

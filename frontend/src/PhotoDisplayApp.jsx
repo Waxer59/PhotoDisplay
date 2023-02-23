@@ -1,9 +1,9 @@
 import { BrowserRouter } from 'react-router-dom';
-import { AppRouter } from './router/AppRouter';
 import { Provider } from 'react-redux';
+import { AppRouter } from './router/AppRouter';
 import { store } from './store/store';
 
-export const PhotoDisplayApp = () => {
+export function PhotoDisplayApp() {
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -11,4 +11,4 @@ export const PhotoDisplayApp = () => {
       </BrowserRouter>
     </Provider>
   );
-};
+}

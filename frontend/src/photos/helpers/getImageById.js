@@ -1,3 +1,2 @@
-export const getImageById = (photos, id) => {
-  return photos.filter((photo) => (String(photo.id) === id ? photo : null));
-};
+export const getImageById = (photos, id) =>
+  photos.filter((photo) => (String(photo.id) === id ? photo : null));
