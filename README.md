@@ -47,7 +47,7 @@ docker-compose up -d
 yarn dev
 ```
 
-> This command will run both proyects in parallel, the fronted and the backend.
+> This command will run both proyects in parallel, the frontend and the backend.
 
 # Technologies
 
