@@ -22,7 +22,11 @@ export const usePhotoStore = () => {
       dispatch(onAddNewPhoto(data));
     } catch (error) {
       console.log(error);
-      Swal.fire('Error when saving', error.response.data.msg, 'error');
+      Swal.fire(
+        'Error when saving',
+        error?.response?.data?.msg ?? 'An error has occurred',
+        'error'
+      );
     }
   };
 
@@ -38,7 +42,11 @@ export const usePhotoStore = () => {
       dispatch(onDeletePhoto());
     } catch (error) {
       console.log(error);
-      Swal.fire('Error when deleting', error.response.data.msg, 'error');
+      Swal.fire(
+        'Error when deleting',
+        error?.response?.data?.msg ?? 'An error has occurred',
+        'error'
+      );
     }
   };
 
@@ -49,7 +57,11 @@ export const usePhotoStore = () => {
       dispatch(onLoadingPhotos(data.images));
     } catch (error) {
       console.log(error);
-      Swal.fire('Error when loading', error.response.data.msg, 'error');
+      Swal.fire(
+        'Error when loading',
+        error?.response?.data?.msg ?? 'An error has occurred',
+        'error'
+      );
     }
   };
 

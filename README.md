@@ -14,12 +14,6 @@ To run the project you must complete the following steps:
 yarn
 ```
 
-### 2. Then you need to install the dependencies of backend and frontend with the command, on the root of the project:
-
-```
-yarn deps
-```
-
 ## 2. Configure Backend
 
 ### Configure the environment variables by renaming the file `.template.env` to `.env` in the root of the frontend folder and filling the variables with the values you want.
@@ -27,6 +21,7 @@ yarn deps
 ### Run the database with docker:
 
 1. Create the docker container to run the database with the command (Important to have the docker daemon open):
+
 ```
 docker-compose up -d
 ```

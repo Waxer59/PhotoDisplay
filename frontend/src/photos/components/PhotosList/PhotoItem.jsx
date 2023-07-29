@@ -23,7 +23,7 @@ export function PhotoItem({ url, label, id }) {
         loading="lazy"
         onError={({ currentTarget }) => {
           currentTarget.onerror = null;
-          currentTarget.src = '../../images/image-not-found.png';
+          currentTarget.src = 'images/image-not-found.png';
         }}
       />
     </li>

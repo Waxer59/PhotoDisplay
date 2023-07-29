@@ -3,13 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "frontend/",
-    "backend/"
+    "frontend",
+    "backend"
   ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "deps": "turbo run deps",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,html,css,md}\"",
     "prepare": "husky install"
