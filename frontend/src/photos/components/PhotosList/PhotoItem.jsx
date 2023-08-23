@@ -6,14 +6,14 @@ import './PhotoItem.css';
 export function PhotoItem({ url, label, id }) {
   const { openDeletePhotoModal } = useUiStore();
   const { setActivePhoto } = usePhotoStore();
-  const onHandleDeleteClick = (e) => {
+  const onHandleDeleteClick = (photoId) => {
     openDeletePhotoModal();
-    setActivePhoto(e);
+    setActivePhoto(photoId);
   };
 
   return (
     <li className="photo">
-      <button className="btn-delete" onClick={onHandleDeleteClick} name={id}>
+      <button className="btn-delete" onClick={() => onHandleDeleteClick(id)}>
         Delete
       </button>
       <span className="label">{label}</span>

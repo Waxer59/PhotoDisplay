@@ -15,7 +15,7 @@ export function PhotosList({ query }) {
       {showImageNotFound ? (
         <h2 className="image-not-found">Upss... Image not found :(</h2>
       ) : (
-        <ul className="photos" id="photos">
+        <ul className="photos">
           {filteredImages.map((photo) => (
             <PhotoItem key={photo.id} {...photo} />
           ))}

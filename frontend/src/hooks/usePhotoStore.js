@@ -30,9 +30,9 @@ export const usePhotoStore = () => {
     }
   };
 
-  const setActivePhoto = (event) => {
-    const photo = getImageById(photos, event.target.name);
-    dispatch(onSetActivePhoto(photo[0]));
+  const setActivePhoto = (id) => {
+    const photo = getImageById(photos, id);
+    dispatch(onSetActivePhoto(photo));
   };
 
   const startDeletetingPhoto = async () => {

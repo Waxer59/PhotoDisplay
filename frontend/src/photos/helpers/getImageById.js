@@ -1,2 +1,2 @@
 export const getImageById = (photos, id) =>
-  photos.filter((photo) => (String(photo.id) === id ? photo : null));
+  photos.filter((photo) => `${photo.id}` === id)[0];
